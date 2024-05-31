@@ -1,36 +1,47 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/UserDetailPage.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchUser } from '../services/api';
-import Layout from '../components/Layout';
+import axios from 'axios';
 
 const UserDetailPage = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getUser = async () => {
-      const response = await fetchUser(id);
-      setUser(response.data.data);
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`https://reqres.in/api/users/${id}`);
+        setUser(response.data.data);
+      } catch (err) {
+        setError('User not found');
+      }
     };
-    getUser();
+
+    fetchUser();
   }, [id]);
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
-    <Layout>
+    <div>
       {user ? (
         <div>
           <h1>User Detail</h1>
-          <p>Name: {user.first_name} {user.last_name}</p>
-          <p>Email: {user.email}</p>
+          <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
           <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
         </div>
       ) : (
         <p>Loading...</p>
       )}
-    </Layout>
+    </div>
   );
 };
 
 export default UserDetailPage;
+
 
 

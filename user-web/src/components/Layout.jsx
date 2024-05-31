@@ -1,39 +1,28 @@
-// src/components/Layout.jsx
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Layout.css';
 
 const Layout = ({ isAuthenticated, onLogout, children }) => {
-  const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
-
   return (
-    <div className="layout">
+    <div>
       <header className="header">
-        <div className="header-left">
-          <h1>Company Check-In</h1>
-        </div>
-        <div className="header-right">
+        <div className="logo">Company Check-In</div>
+        <nav className="nav">
+          <Link to="/">Home</Link>
+          <div className="search-container">
+            <input type="text" placeholder="Search" />
+            <button><i className="fas fa-search"></i></button>
+          </div>
+          {isAuthenticated && <Link to="/user/1">User Details</Link>}
           {isAuthenticated ? (
             <button onClick={onLogout}>Logout</button>
           ) : (
-            <button onClick={handleLoginClick}>Login</button>
+            <Link to="/login">Login</Link>
           )}
-        </div>
+        </nav>
       </header>
-      <div className="content">
-        <aside className="sidebar">
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/user/1">User Details</Link></li>
-            </ul>
-          </nav>
-        </aside>
-        <main className="main-content">
+      <div className="main-container">
+        <main className="container">
           {children}
         </main>
       </div>
@@ -42,3 +31,6 @@ const Layout = ({ isAuthenticated, onLogout, children }) => {
 };
 
 export default Layout;
+
+
+

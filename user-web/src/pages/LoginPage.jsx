@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
-import Layout from '../components/Layout';
+import './Login.css';
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <Layout>
+    <div className='border'>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -43,11 +43,13 @@ const LoginPage = ({ onLogin }) => {
         </div>
         {error && <p>{error}</p>}
         <button type="submit">Login</button>
+        <button type="button" onClick={() => navigate('/register')}>Register</button>
       </form>
-    </Layout>
+    </div>
   );
 };
 
 export default LoginPage;
+
 
 

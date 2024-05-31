@@ -1,65 +1,76 @@
-.layout {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .header-left h1 {
-    margin: 0;
-  }
-  
-  .header-right button {
-    padding: 0.5rem 1rem;
-    background-color: #61dafb;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .header-right button:hover {
-    background-color: #21a1f1;
-  }
-  
-  .content {
-    display: flex;
-    flex: 1;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 1rem;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar nav ul li {
-    margin-bottom: 1rem;
-  }
-  
-  .sidebar nav ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .sidebar nav ul li a:hover {
-    color: #61dafb;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 1rem;
-  }
-  
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+.nav a, .nav button {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.main-container {
+  display: flex;
+  margin: 20px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.logo {
+  font-size: 1.5em;
+  color: #00bcd4;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a, .nav button {
+  margin-left: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.nav a:hover, .nav button:hover {
+  color: #00bcd4;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin-left: 20px;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: #00bcd4;
+}
